@@ -16,8 +16,6 @@ RUN cargo build --release --features pulseaudio_backend
 
 FROM debian:stretch-slim as release
 
-#CMD ["/usr/bin/spotifyd", "--no-daemon"]
-
 RUN apt-get update && \
     apt-get install -yqq --no-install-recommends libasound2 pulseaudio && \
     rm -rf /var/lib/apt/lists/* && \
@@ -30,6 +28,6 @@ COPY --from=build /usr/src/spotifyd/target/release/spotifyd /usr/bin/
 
 USER spotify
 
-# Create files to secure the web server
 COPY entrypoint.sh /
+
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
