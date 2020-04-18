@@ -14,9 +14,9 @@ This container just needs two environment variables:
 
 ### Sample docker-compose
 
-``
+```
 version: '3'
-services:
+ services:
  spotifyd:
     image: ausraster/spotifyd
     network_mode: "host"
@@ -25,4 +25,4 @@ services:
       - PULSE_IP=192.168.178.6
     volumes:
       - /etc/spotifyd.conf:/etc/spotifyd.conf
-``
+```
